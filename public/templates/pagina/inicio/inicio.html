@@ -3,5 +3,121 @@
 {% block title %}Inicio | Grupo Scout V Kenya{% endblock title %}
 
 {% block content %}
-    
+<div class="container">
+    <style>
+        .ifram-width {
+            max-width: auto;
+            max-height: 540px;
+        }
+
+        .titulo {
+            margin: 0.5em 0;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .titulo .cinta {
+            width: 100%;
+            height: 0.2em;
+            margin: 0 2em;
+        }
+
+        .titulo .cinta:first-child {
+            background-color: #00f;
+        }
+
+        .titulo .cinta:last-child {
+            background-color: red;
+        }
+    </style>
+    {% for i in inicio %}
+    <div class="row mb-3 mx-1">
+        <div class="ratio ratio-21x9 col-12">
+            <iframe class="ifram-width mt-2" src="{{i.video_link}}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="card-group">
+        {% for u in unidades %}
+        {% if u.is_active %}
+        <div class="card border-success mx-1">
+            {% if u.logo_img %}
+            <img src="{{u.logo_img}}" class="card-img-top" alt="{{u.section_name}}">
+            {% endif %}
+            <div class="card-header text-center">
+                <h5 class="card-title">{{u.section_name}}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{u.content | safe | truncatechars:100 }}</p>
+            </div>
+
+            <div class="card-footer text-muted text-center">
+                <a href="#" class="btn btn-success card-link mb-1">Ver más..</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="card mt-4">
+        {% for i in inicio %}
+        <div class="row">
+            <div class="col-md-4">{{i.img_content}}</div>
+            <div class="col-md-6">{{i.content | safe}} </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="titulo">
+        <div class="cinta"></div>
+        <h2 class="text-center">Noticias</h2>
+        <div class="cinta"></div>
+    </div>
+
+    <div class="card-group">
+    {% for n in noticias %}
+    {% if n.is_active and n.home_active and forloop.counter < 4 %}
+    <div class="card border-warning mx-2 mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                {% if n.img %}<img src="{{n.img}}" class="img-fluid rounded-start" alt="{{n.section_name}}">{% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{n.section_name}}</h5>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <p class="card-tex">
+                                {{n.content | safe | truncatechars:100 }}
+                            </p>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="">
+                                Ver más...
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <small class="text-muted">{{n.updated}}</small>
+                        </li>
+                    </ul>
+                    <p class="card-text">
+
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+
+</div>
 {% endblock content %}

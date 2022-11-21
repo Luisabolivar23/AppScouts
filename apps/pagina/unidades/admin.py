@@ -6,4 +6,4 @@ from apps.pagina.unidades.models import UnitsModel
 
 @admin.register(UnitsModel)
 class UnitsAdmin(GeneralAdmin):
-    pass
+    list_display = ('id', 'section_name', 'is_active')

@@ -29,6 +29,11 @@ class GeneralModel(models.Model):
         'Estado',
         default=True,
     )
+    
+    home_active = models.BooleanField(
+        'Se muestra en el inicio',
+        default=True
+    )
 
     def __str__(self) -> str:
         return f"{self.section_name}"
@@ -40,7 +45,8 @@ class GeneralModel(models.Model):
 class NewsModel(GeneralModel):
     img = models.ImageField(
         "Imagen",
-        upload_to="media/news/img/"
+        upload_to="news/img/",
+        blank=True, null=True
     )
 
     content = RichTextField(

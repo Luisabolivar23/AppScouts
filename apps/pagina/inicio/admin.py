@@ -4,7 +4,7 @@ from apps.pagina.inicio.models import HomeModel
 
 
 class GeneralAdmin(admin.ModelAdmin):
-    list_display = ('id', 'section_name')
+    list_display = ('id', 'section_name', 'is_active')
     list_display_links = ('id', 'section_name')
     readonly_fields = ("created", "updated")
     ordering = ("order", "section_name", "id")

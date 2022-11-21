@@ -1,6 +1,9 @@
 from django.utils import timezone
 from django.db import models
 
+from ckeditor.fields import RichTextField
+
+
 class GeneralModel(models.Model):
     section_name = models.CharField(
         "Nombre o título",
@@ -21,7 +24,7 @@ class GeneralModel(models.Model):
         'Orden',
         default=0,
     )
-    
+
     is_active = models.BooleanField(
         'Estado',
         default=True,
@@ -37,7 +40,12 @@ class GeneralModel(models.Model):
 class UnitsModel(GeneralModel):
     logo_img = models.ImageField(
         "Logo",
-        upload_to="media/inicio/unidades/"
+        upload_to="inicio/unidades/",
+        blank=True, null=True
+    )
+
+    content = RichTextField(
+        "Contenido"
     )
 
     def __str__(self) -> str:

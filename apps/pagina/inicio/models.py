@@ -54,7 +54,8 @@ class HomeModel(GeneralModel):
 
     img_content = models.ImageField(
         "Imagen del banner del inicio",
-        upload_to="media/inicio/banner/"
+        upload_to="inicio/banner/",
+        blank=True, null=True
     )
 
     content = RichTextField(

@@ -1,3 +1,14 @@
-<footer class="fixed-bottom">
-    <h1>Footer</h1>
-</footer>
+{% url "inicio:inicio" as inicio %}
+
+<div class="container">
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="{{inicio}}" class="nav-link px-2 text-muted">Inicio</a></li>
+            <li class="nav-item"><a href="https://github.com/Luisabolivar23/AppScouts" class="nav-link px-2 text-muted">Github</a></li>
+            <li class="nav-item"><a href="{{inicio}}" class="nav-link px-2 text-muted">¿Quiénes Somos?</a></li>
+            <li class="nav-item"><a href="{{inicio}}" class="nav-link px-2 text-muted">Contáctanos</a></li>
+            <li class="nav-item"><a href="{{inicio}}" class="nav-link px-2 text-muted">Noticias</a></li>
+        </ul>
+        <p class="text-center text-muted">© {% now 'Y' %} Luisa Bolivar</p>
+    </footer>
+</div>
