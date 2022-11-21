@@ -1,21 +1,16 @@
 from django.contrib import admin
 
-from apps.pagina.inicio.models import InicioModel, UnidadesModel
+from apps.pagina.inicio.models import HomeModel
 
 
-@admin.register(InicioModel)
-class InicioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'titulo')
-    list_display_links = ('id', 'titulo')
-    readonly_fields = ("creado", "actualizado", "orden")
-    ordering = ("orden", "titulo")
-    search_fields = ("id", "titulo")
+class GeneralAdmin(admin.ModelAdmin):
+    list_display = ('id', 'section_name')
+    list_display_links = ('id', 'section_name')
+    readonly_fields = ("created", "updated")
+    ordering = ("order", "section_name", "id")
+    search_fields = ("id", "section_name")
 
 
-@admin.register(UnidadesModel)
-class UnidadesAdmin(admin.ModelAdmin):
-    list_display = ("id", "nombre")
-    list_display_links = ("id", "nombre")
-    readonly_fields = ("creado", "actualizado", "orden")
-    ordering = ("orden", "nombre")
-    search_fields = ("id", "nombre")
+@admin.register(HomeModel)
+class HomeAdmin(GeneralAdmin):
+    pass

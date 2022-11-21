@@ -1,9 +1,6 @@
 from django.utils import timezone
 from django.db import models
 
-from ckeditor.fields import RichTextField
-
-
 class GeneralModel(models.Model):
     section_name = models.CharField(
         "Nombre o título",
@@ -37,26 +34,17 @@ class GeneralModel(models.Model):
         abstract = True
 
 
-class NewsModel(GeneralModel):
-    img = models.ImageField(
-        "Imagen",
-        upload_to="media/news/img/"
-    )
-
-    content = RichTextField(
-        "Contenido"
-    )
-
-    home_visible = models.BooleanField(
-        "¿Es visible en el inicio?",
-        default=True
+class UnitsModel(GeneralModel):
+    logo_img = models.ImageField(
+        "Logo",
+        upload_to="media/inicio/unidades/"
     )
 
     def __str__(self) -> str:
         return f"{self.section_name}"
 
     class Meta:
-        verbose_name = "Pagina | Noticia"
-        verbose_name_plural = "Pagina | Noticias"
+        verbose_name = "Pagina | Unidad"
+        verbose_name_plural = "Pagina | Unidades"
         ordering = ["order", "id"]
-        db_table = "app_pagina_news_model"
+        db_table = "apps_pagina_units_model"

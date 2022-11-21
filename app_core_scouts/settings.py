@@ -30,16 +30,29 @@ ALLOWED_HOSTS = ['luisabloivar23.pythonanywhere.com', '*']
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.pagina.inicio',
-    'apps.pagina.noticias'
 ]
+
+THIRD_PARTY_APPS = [
+    'ckeditor'
+]
+
+PROJECT_APPS = [
+    'apps.pagina.inicio',
+    'apps.pagina.noticias',
+    'apps.pagina.unidades',
+    'apps.autenticacion.usuarios'
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
+
+AUTH_USER_MODEL = 'usuarios.UsersModel'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,3 +143,15 @@ MEDIA_ROOT = '/home/luisabloivar23/app_core_scouts/media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = '/home/luisabloivar23/app_core_scouts/static'
 STATIC_URL = '/static/'
+
+# CKEDITOR
+# see https://django-ckeditor.readthedocs.io/en/latest/
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 300,
+    },
+}
+
+CKEDITOR_UPLOAD_PATH = "media/uploads/"
