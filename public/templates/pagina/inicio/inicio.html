@@ -48,7 +48,7 @@
         {% if u.is_active %}
         <div class="card border-success mx-1">
             {% if u.logo_img %}
-            <img src="{{u.logo_img}}" class="card-img-top" alt="{{u.section_name}}">
+            <img src="{{u.logo_img.url}}" class="card-img-top" alt="{{u.section_name}}">
             {% endif %}
             <div class="card-header text-center">
                 <h5 class="card-title">{{u.section_name}}</h5>
@@ -68,7 +68,7 @@
     <div class="card mt-4">
         {% for i in inicio %}
         <div class="row">
-            <div class="col-md-4">{{i.img_content}}</div>
+            <div class="col-md-4"><img src="{{i.img_content.url}}"></div>
             <div class="col-md-6">{{i.content | safe}} </div>
         </div>
         {% endfor %}
@@ -86,7 +86,7 @@
     <div class="card border-warning mx-2 mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
-                {% if n.img %}<img src="{{n.img}}" class="img-fluid rounded-start" alt="{{n.section_name}}">{% endif %}
+                {% if n.img %}<img src="{{n.img.url}}" class="img-fluid rounded-start" alt="{{n.section_name}}">{% endif %}
             </div>
             <div class="col-md-8">
                 <div class="card-body">
