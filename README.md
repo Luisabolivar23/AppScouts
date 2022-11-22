@@ -20,4 +20,6 @@ python manage.py runserver
 ```
 
 ### Miembros
+- Angela Hurtado
 - Luisa Bolivar
+
