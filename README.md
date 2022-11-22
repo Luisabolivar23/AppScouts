@@ -15,6 +15,7 @@ pip install -r requirements.txt
 ```
 3.
 ```console
+python manage.py migrate
 python manage.py runserver
 ```
 

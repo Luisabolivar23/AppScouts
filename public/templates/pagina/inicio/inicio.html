@@ -68,7 +68,7 @@
     <div class="card mt-4">
         {% for i in inicio %}
         <div class="row">
-            <div class="col-md-4"><img src="{{i.img_content.url}}"></div>
+            <div class="col-md-4">{% if i.img_content %}<img src="{{i.img_content.url}}">{% endif %}</div>
             <div class="col-md-6">{{i.content | safe}} </div>
         </div>
         {% endfor %}
